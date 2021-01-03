@@ -1,0 +1,8 @@
+body #guessword span {
+  color: transparent;
+}
+
+body #guessedLetters {
+  padding: 5px;
+}
+/*# sourceMappingURL=styles.css.map */

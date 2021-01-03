@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Hangman</title>
+</head>
+<body>
+    <main>
+        <h1>Hangman</h1>
+        <button id="new-word-button">
+            New Word
+        </button>        
+        <section>
+            <p id="guessword">
+                <span>H</span>
+                <span>o</span>
+                <span>u</span>
+                <span>s</span>
+                <span>e</span>
+            </p>
+            <p id="letterLines">_ _ _ _ _</p>
+            <input id="inputLetter" type="text">
+            <a id="inputButton">Guess</a>
+            <p id="guessedLetters"></p>
+        </section>
+    </main>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
