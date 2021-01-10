@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">    <link rel="stylesheet" href="styles.css">
     <title>Hangman</title>
 </head>
 <body>
     <main>
-        <h1>Hangman</h1>
-        <button id="new-word-button">
-            New Word
-        </button>        
-        <section>
-            <p id="guessword">
-                <span>H</span>
-                <span>o</span>
-                <span>u</span>
-                <span>s</span>
-                <span>e</span>
-            </p>
-            <p id="letterLines">_ _ _ _ _</p>
-            <input id="inputLetter" type="text">
-            <a id="inputButton">Guess</a>
-            <p id="guessedLetters"></p>
+        <nav>
+            <h1>Hangman</h1>
+            <div class="buttons">
+                <button id="new-game-button" class="button">New Game</button>
+                <button id="new-word-button" class="button">New Word</button>
+            </div>
+            <div>
+                <p id="score-display">Score: 0</p>
+                <p id="level">Level: Noob</p>
+            </div>
+        </nav>
+        <section class="game-container">
+            <div class="guess-container">
+                <p id="guessword"></p>
+                <input id="inputLetter" type="text" onfocus="this.value=''" maxlength="1" placeholder="Guess letter here..." onkeypress="return (event.charCode > 64 && 
+                event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
+                <input type="submit" id="inputButton" value="Guess"></input>
+                <p id="guessedLetters"></p>
+            </div>
+            <img id="hangman" src="./assets/images/0.png" alt="">
+        </section>
+        <section id="loser-card">
         </section>
     </main>
     <script src="./main.js" type="module"></script>
