@@ -73,13 +73,13 @@ const showScore = () => {
 }
 
 const showLevel = () => {
-    if(score > 2) {
+    if(score > 2 && score < 6) {
         level = "Rookie"
-    } else if(score > 5) {
+    } else if(score > 5 && score < 9) {
         level = "Skilled"
-    } else if(score > 8) {
+    } else if(score > 8  && score < 12) {
         level = "Expert"
-    } else if(score > 11) {
+    } else if(score > 11 && score < 15) {
         level = "Grand Master"
     } else if(score > 14) {
         level = "Legend"
