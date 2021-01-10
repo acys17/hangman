@@ -108,6 +108,7 @@ body main img {
 body main #loser-card {
   visibility: hidden;
   position: absolute;
+  width: 90vw;
   top: 8vh;
   margin: 5vw;
   padding: 5vw;

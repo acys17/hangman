@@ -1,4 +1,7 @@
-import words from "./data/words.js"
+import words from "./data/words.js";
+import levelDescriptions from "./data/level.js";
+
+console.log(levelDescriptions);
 
 const guesswordHTML = document.getElementById("guessword");
 const newWordButton = document.getElementById("new-word-button");
@@ -23,9 +26,9 @@ let splitWord;
 let lettersLeft;
 let spanArray;
 let letterArray;
+let levelText;
 
 // Add losing text for each level in new level.js file
-// Add more words to words.js file
 
 const showWord = () => {
     guesswordHTML.innerHTML = ""
@@ -35,7 +38,7 @@ const showWord = () => {
 }
 
 const selectWord = () => {
-    let randomNumber = Math.floor((Math.random() * 10) + 1)
+    let randomNumber = Math.floor((Math.random() * 50) + 1)
     findWord = (words.filter(word => word.id === randomNumber))[0]; 
     splitWord = findWord.word.split("");
     lettersLeft = findWord.word.length;
@@ -87,6 +90,11 @@ const showLevel = () => {
     levelDisplay.innerText = `Level: ${level}`
 }
 
+const showLevelText = () => {
+    const levelObject = levelDescriptions.find(description => description.level === level);
+    levelText = levelObject.text;
+}
+
 const win = () => {
     score++;
     resetGame();
@@ -94,11 +102,12 @@ const win = () => {
 
 const lose = () => {
     loserCard.style.visibility = "visible";
+    showLevelText();
     loserCard.innerHTML = `
     <h2>You Lose!</h2>
     <h3>Score: ${score}</h3>
     <h3>Level: ${level}</h3>
-    <p>You're a NOOB! But it's okay because practice makes perfect. (And it's only a game.)</p>
+    <p>${levelText}</p>
     `
 }
 
