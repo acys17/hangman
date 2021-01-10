@@ -90,7 +90,7 @@ body main .guess-container #guessword * {
 body main .guess-container #guessword span {
   color: transparent;
   font-size: 1.5rem;
-  margin-right: 4vw;
+  margin-right: 3vw;
   border-bottom: 2px solid black;
 }
 
@@ -139,6 +139,12 @@ body main #loser-card {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  body .game-container #guess-container {
+    width: 30vw;
   }
   body .game-container img {
     width: 40vw;
