@@ -1,7 +1,7 @@
-import words from "./data/words.js";
+import easyWords from "./data/easyWords.js";
+import mediumWords from "./data/mediumWords.js";
+import hardWords from "./data/hardWords.js";
 import levelDescriptions from "./data/level.js";
-
-console.log(levelDescriptions);
 
 const guesswordHTML = document.getElementById("guessword");
 const newWordButton = document.getElementById("new-word-button");
@@ -12,6 +12,7 @@ const hangman = document.getElementById("hangman");
 const scoreDisplay = document.getElementById("score-display");
 const levelDisplay = document.getElementById("level");
 const loserCard = document.getElementById("loser-card")
+const winnerCard = document.getElementById("winner-card");
 const newGame = document.getElementById("new-game-button");
 
 let livesLost = 0;
@@ -27,8 +28,7 @@ let lettersLeft;
 let spanArray;
 let letterArray;
 let levelText;
-
-// Add losing text for each level in new level.js file
+let continueButton;
 
 const showWord = () => {
     guesswordHTML.innerHTML = ""
@@ -39,7 +39,13 @@ const showWord = () => {
 
 const selectWord = () => {
     let randomNumber = Math.floor((Math.random() * 50) + 1)
-    findWord = (words.filter(word => word.id === randomNumber))[0]; 
+    if(score <10) {
+        findWord = (easyWords.filter(word => word.id === randomNumber))[0]; 
+    } else if(score < 20) {
+        findWord = (mediumWords.filter(word => word.id === randomNumber))[0]; 
+    } else {
+        findWord = (hardWords.filter(word => word.id === randomNumber))[0]; 
+    }
     splitWord = findWord.word.split("");
     lettersLeft = findWord.word.length;
     showWord();
@@ -76,16 +82,22 @@ const showScore = () => {
 }
 
 const showLevel = () => {
-    if(score > 2 && score < 6) {
-        level = "Rookie"
-    } else if(score > 5 && score < 9) {
-        level = "Skilled"
-    } else if(score > 8  && score < 12) {
-        level = "Expert"
-    } else if(score > 11 && score < 15) {
-        level = "Grand Master"
-    } else if(score > 14) {
-        level = "Legend"
+    if(score > 4 && score < 10) {
+        level = "Rookie";
+    } else if(score > 9 && score < 15) {
+        level = "Notable";
+    } else if(score > 14  && score < 20) {
+        level = "Skilled";
+    } else if(score > 19 && score < 25) {
+        level = "Expert";
+    } else if(score > 24 && score < 30) {
+        level = "Genius";
+    } else if(score > 29 && score < 35) {
+        level = "Hero";
+    } else if(score > 34 && score < 40) {
+        level = "Grand Master";
+    } else if(score > 39) {
+        level = "Legend";
     }
     levelDisplay.innerText = `Level: ${level}`
 }
@@ -95,19 +107,35 @@ const showLevelText = () => {
     levelText = levelObject.text;
 }
 
+const continueGame = () => {
+    continueButton.addEventListener("click", () => {
+        resetGame();
+        winnerCard.style.visibility = "hidden";
+        });
+    }
+
 const win = () => {
     score++;
-    resetGame();
+    winnerCard.style.visibility = "visible";
+    winnerCard.innerHTML = `
+    <h2>Congratulations!</h2>
+    <p>You guessed the word ${findWord.word} correctly!</p>
+    <button id="continue-button" class="button">Play next word!</button>
+    `
+    continueButton = document.getElementById("continue-button");
+    continueGame();
 }
 
 const lose = () => {
     loserCard.style.visibility = "visible";
     showLevelText();
     loserCard.innerHTML = `
-    <h2>You Lose!</h2>
+    <h2>You Lose :( Better luck next time!</h2>
+    <p>The word was <strong>${findWord.word}</strong></p>
     <h3>Score: ${score}</h3>
     <h3>Level: ${level}</h3>
     <p>${levelText}</p>
+    <p>Click the button in the <strong>top right</strong> of the page to start a new game!</p>
     `
 }
 

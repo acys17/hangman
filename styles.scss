@@ -22,19 +22,12 @@ body {
                 display: flex;
                 flex-direction: column;
 
-                .button {
-                    height: 5vh;
-                    width: 100px;
-                    font-size: 1.2rem;
-                    margin-bottom: 2vh;
-                }
             }
-
         }
 
         h1 {
             line-height: 1; 
-            width: 60vw;           
+            width: 20vw;           
         }
 
         p {
@@ -59,7 +52,7 @@ body {
                 span {
                     color: transparent;
                     font-size: 1.5rem;
-                    margin-right: 3vw;
+                    margin-right: 1.5vw;
                     border-bottom: 2px solid black;
                 }
             }
@@ -76,43 +69,91 @@ body {
             margin: 0 5vw;
         }
 
-        #loser-card {
+        #winner-card, #loser-card {
             visibility: hidden;
             position: absolute;
             width: 90vw;
             top: 8vh;
             margin: 5vw;
             padding: 5vw;
-            background-color: white;
-            box-shadow: 2px 2px 10px rgb(235, 235, 235);
+            background-color: rgb(220, 228, 235);
+            border: 10px solid white;
+            box-shadow: 2px 2px 10px rgb(165, 164, 164);
+            font-size: 1.5rem;
+        }
+
+        .button {
+            min-height: 5vh;
+            width: 100px;
+            font-size: 1.2rem;
+            margin-bottom: 2vh;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        main {
+            #winner-card {
+                width: 70vw;
+                margin: 10% 15%;
+            }
+
+            .game-container {
+                margin-left: 5vw;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                #guess-container {
+                    width: 30vw;
+                }
+
+                img {
+                    width: 40vw;
+                }
+            }
         }
     }
 }
 
 @media only screen and (min-width: 1024px) {
     body {
-        nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 3vh 5vw;
-            width: 100vw;
-            h1 {
-                font-size: 5rem;
-            }
-        }
+        main {
+            nav {
+                display: flex;
+                justify-content: space-between;
+                padding: 3vh 5vw;
+                width: 100vw;
 
-        .game-container {
-            margin-left: 5vw;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
+                h1 {
+                    font-size: 5rem;
+                    width: 25vw; 
+                }
 
-            #guess-container {
-                width: 30vw;
+                .legend {
+                    width: 25vw;
+                }
             }
 
-            img {
-                width: 40vw;
+            .game-container {
+                margin-left: 5vw;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+                #guess-container {
+                    width: 30vw;
+                }
+
+                img {
+                    width: 40vw;
+                }
+            }
+
+            #winner-card {
+                width: 50vw;
+                margin: 5% 25%;
             }
         }
     }

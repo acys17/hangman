@@ -12,13 +12,13 @@
     <main>
         <nav>
             <h1>Hangman</h1>
-            <div class="buttons">
-                <button id="new-game-button" class="button">New Game</button>
-                <button id="new-word-button" class="button">New Word</button>
-            </div>
             <div>
                 <p id="score-display">Score: 0</p>
                 <p id="level">Level: Noob</p>
+            </div>
+            <div class="buttons">
+                <button id="new-game-button" class="button">New Game</button>
+                <button id="new-word-button" class="button">New Word</button>
             </div>
         </nav>
         <section class="game-container">
@@ -26,13 +26,14 @@
                 <p id="guessword"></p>
                 <input id="inputLetter" type="text" onfocus="this.value=''" maxlength="1" placeholder="Guess letter here..." onkeypress="return (event.charCode > 64 && 
                 event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
-                <input type="submit" id="inputButton" value="Guess"></input>
+                <input type="submit" id="inputButton" class="button"value="Guess"></input>
                 <p id="guessedLetters"></p>
             </div>
             <img id="hangman" src="./assets/images/0.png" alt="">
         </section>
-        <section id="loser-card">
+        <section id="winner-card">
         </section>
+        <section id="loser-card"></section>
     </main>
     
     <script src="./main.js" type="module"></script>
