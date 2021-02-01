@@ -1,6 +1,6 @@
 import easyWords from "./data/easyWords.js";
 import mediumWords from "./data/mediumWords.js";
-import hardWords from "./data/hardWords.js";
+import difficultWords from "./data/difficultWords.js";
 import levelDescriptions from "./data/level.js";
 
 const guesswordHTML = document.getElementById("guessword");
@@ -44,7 +44,7 @@ const selectWord = () => {
     } else if(score < 20) {
         findWord = (mediumWords.filter(word => word.id === randomNumber))[0]; 
     } else {
-        findWord = (hardWords.filter(word => word.id === randomNumber))[0]; 
+        findWord = (difficultWords.filter(word => word.id === randomNumber))[0]; 
     }
     splitWord = findWord.word.split("");
     lettersLeft = findWord.word.length;

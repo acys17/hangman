@@ -1,4 +1,4 @@
-const hardWords = [
+const difficultWords = [
     {
     id: 1,
     word: "Champion"
@@ -201,4 +201,4 @@ const hardWords = [
     }
 ]
 
-export default hardWords;
+export default difficultWords;
